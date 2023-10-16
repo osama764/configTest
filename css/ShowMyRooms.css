@@ -135,7 +135,7 @@ border-radius: 5px;
   font-weight: 600;
 }
   label {
-    font-size: 20px;
+    font-size: 15px;
   }
 .form-check-input[type="checkbox"] {
   position: relative;
@@ -177,7 +177,7 @@ scale:.8
   background-color: #ffffff;
   z-index: 99999999;
   transition: 0.7s;
-  transform: scale(0);
+  /* transform: scale(0); */
   border-radius: 10px;
 }
 
@@ -206,29 +206,33 @@ input[type="text"] {
 
 .addDefferentDevice{
   position: relative;
-  top: 15px;
-  left: -40px;
+  top: 25px;
+  left: -20px;
 }
 .selectImage{
   position: relative;
-  top: 15px;
+  top: 18px;
 }
 
 .typesAllDevices {
 flex-wrap: wrap;
+display: flex;
 }
 .typesAllDevices .form-check{
-  width: 25%;
+  width: 40%;
 }
 .typesAllDevices label{
   font-size: 12px !important;
 }
 
 .typesAllDevices .form-check-input[type="checkbox"] {
-  position: static;
 
   font-size: 15px;
 }
+
+
+
+
 
 
 .fa-trash-can {
@@ -241,23 +245,6 @@ transition: .7s;
 }
 
 
-.modal{
-  color: #123 !important;
-  transition: .7s;
-}
-.model{
-  color: #123 !important;
-  transition: .7s;
-  background-color: #fff;
-  padding: 15px;
-  border-radius: 6px;
-  width: 300px;
-position: fixed;
-top: 15%;
-left: 15%;
-width: 450px;
-/* scale: 0; */
-}
 .fa-trash-can{
   border: none;
   background: #fff;
@@ -347,230 +334,9 @@ transition: .7s;
 
 
 
-@media (min-width: 501px) and (max-width: 1000px) {
-  h1 {
-    font-size: 20px;
-  }
-
-  .description {
-display: none;
-  }
-  
-  .lotifile .lotee {
-    width: 150%;
-    transform: translateY(3px);
-    transform: translateX(50px);
-    
-  }
-
-  .addDevice {
-    position: fixed;
-    left: 85%;
-    bottom: 15% !important;
-    z-index: 999999;
-  width: 40px;
-  }
-
-  .title-devices{
-font-size: 22px;
-    padding: 12px;
-    margin: 10px auto;
-  }
-
-  .devices .card ,.devicesPush .card{
-    width: 31%;
-    position: relative;
-
-    height: 9em;
-    overflow: hidden;
-  }
-  .devices .card p,.devicesPush .card p{
-    font-size: 11px !important;
-    position: absolute;
-top: 8px;
-right: 3px;
-  }
-  .card img{
-    width: 90px;
-    height: 60px !important;
-  }
 
 
-
-  .contentDevices {
-    position: fixed;
-    left: 5%;
-    top: 5%;
-    width: 95%;
-  }
-
-
-  label {
-    font-size: 16px;
-  }
-  .form-check-input[type="checkbox"] {
-  
-    top: -5px !important;
-    left: -10px !important;
-  
-}
-
-.fa-trash-can {
-  transition: .7s;
-  font-size: 15px !important;
-  padding: 3px !important;
-  border-radius: 1px !important;
-  }
-  .btn{
-
-    font-size: 12px !important;
-    padding: 5px !important;
-  }
-
-
-
-
-  .form-select{
-    font-size: 10px;
-  }
-  .addNewDevice{
-    font-size: 12px;
-  }
-    .contentDevices {
-      position: fixed;
-    
-      top: -1%;
-      width: 95%;
-      flex-direction: column;
-    }
-  
-  
-    label {
-      font-size: 15px;
-    }
-    .form-check-input[type="checkbox"] {
-    
-      top: -5px !important;
-      left: -10px !important;
-    
-  }
-  
-  .seimg{
-  
-    display: none;
-  }
-  
-  .selectImage{
-    position: relative;
-  top: 1px !important;
-    font-size: 12px;
-    left: -300px;
-    width: 200px;
-  }
-  .typeText{
-    font-size: 12px !important;
-  
-  }
-  .fa-trash-can {
-    transition: .7s;
-    font-size: 15px !important;
-    padding: 3px !important;
-    border-radius: 1px !important;
-    }
-    .card .btn{
-  width: 50% !important;
-      font-size: 12px !important;
-      padding: 5px !important;
-    }
-  
-  
-  
-    /* ******************* */
-  
-    
-  .contentDevices {
-  
-    width: 85%;
-  
-  }
-  
-  
-  
-  label {
-    margin-left: 20px;
-    color: #fff;
-    font-weight: 700;
-    font-size: 14px;
-    width: 100%;
-  }
-  input[type="text"] {
-  
-    font-size: 15px;
-  
-  }
-  
-  .loteemobile{
-    display: none !important;
-  }
-  
-  
-  .typesAllDevices {
-  flex-wrap: wrap;
-  display: flex;
-  }
-  
-  .textLable .form-label{
-    font-size: 10px;
-  }
-  .addDefferentDevice{
-    position: relative;
-    top: 25px;
-    left: 10px;
-  font-size: 12px;
-  width: 150px;
-  }
-  
-  
-  
-  .typesAllDevices .form-check{
-    width: 25%;
-  }
-  .typesAllDevices label{
-    font-size: 10px !important;
-  }
-  
-  .typesAllDevices .form-check-input[type="radio"] {
-    position: static;
-  
-    font-size: 15px;
-  }
-
-  #closeImages{
-
-    font-size: 18px;
-  
-    margin-left: 88%;
-  
-  }
-  #containerImage h2{
-  
-    font-size: 25px;
-  
-  }
-  
-  
-  .cardImage{
-    width: 21%;
-  
-  
-  }
-  .cardImage img{
-  
-    height: 150px;
-  }
-}
-
-@media  (max-width: 500px) {
+@media  (max-width: 1000px) {
 
 
 
@@ -624,6 +390,11 @@ right: 3px;
 .form-select{
   font-size: 10px;
 }
+
+.addDeviceforRoom{
+  display: flex;
+  flex-direction: column;
+}
 .addNewDevice{
   font-size: 12px;
 }
@@ -652,14 +423,16 @@ right: 3px;
 }
 
 .selectImage{
-  position: relative;
-top: 5px !important;
+
   font-size: 12px;
-  left: -150px;
+
   width: 350px !important;
 }
 .typeText{
   font-size: 12px !important;
+  position: relative;
+  top: 15px;
+  width: 60px !important;
 
 }
 .fa-trash-can {
@@ -706,25 +479,30 @@ input[type="text"] {
 
 
 .typesAllDevices {
-flex-wrap: wrap;
-display: flex;
+  flex-wrap: wrap;
+  display: flex;
+  height: 100px;
+  overflow-y: auto;
 }
-
 .textLable .form-label{
-  font-size: 10px;
+  font-size: 13px;
 }
 .addDefferentDevice{
   position: relative;
-  top: 25px;
+  top: 20px;
   left: 10px;
 font-size: 12px;
-width: 150px;
+width: 100px;
+
+
 }
 
 
 
 .typesAllDevices .form-check{
-  width: 25%;
+  width: 100%;
+
+
 }
 .typesAllDevices label{
   font-size: 10px !important;
@@ -752,13 +530,13 @@ width: 150px;
 
 
 .cardImage{
-  width: 20%;
+  width: 18%;
 
 
 }
 .cardImage img{
 
-  height: 100px;
+  height: 70px;
 }
 
 }
