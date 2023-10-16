@@ -36,6 +36,8 @@
 
     </div>
     
+
+    <!-- form -->
     <div
       class="container d-flex align-items-center justify-content-between mt-3 p-5 contentDevices">
       <button class="closecontentdevices btn btn-warning"
@@ -55,9 +57,9 @@
         <div class="addDeviceforRoom">
       
       
-          <div class="typesAllDevices d-flex align-items-center justify-content-between">
+          <div class="typesAllDevices">
             
-            <div class="form-check p-2 mb-3  d-flex align-items-center ">
+            <div class="form-check   d-flex align-items-center ">
               <input class="form-check-input  ms-1" type="radio" name="deviceType" value="condition" id="condition">
               <label class="form-check-label" for="condition" style="color: #123;">
                   condition
@@ -65,21 +67,21 @@
           </div>
           
       
-              <div class="form-check p-2 mb-3  d-flex align-items-center ">
+              <div class="form-check   d-flex align-items-center ">
                   <input class="form-check-input  ms-1" type="radio" name="deviceType" value="spot" id="spot">
                   <label class="form-check-label" for="spot" style="color: #123;">
                       spot
                   </label>
               </div>
       
-              <div class="form-check p-2 mb-3  d-flex align-items-center ">
+              <div class="form-check   d-flex align-items-center ">
                   <input class="form-check-input  ms-1" type="radio" name="deviceType" value="profileLight" id="profileLight">
                   <label class="form-check-label" for="profileLight" style="color: #123;">
                       profile Light
                   </label>
               </div>
       
-              <div class="form-check p-2 mb-3  d-flex align-items-center ">
+              <div class="form-check   d-flex align-items-center ">
                   <input class="form-check-input  ms-1" type="radio" name="deviceType" value="Chandelier" id="Chandelier">
                   <label class="form-check-label" for="Chandelier" style="color: #123;">
                       Chandelier
@@ -87,7 +89,7 @@
               </div>
       
           
-              <div class="form-check p-2 mb-3  d-flex align-items-center ">
+              <div class="form-check   d-flex align-items-center ">
                 <input class="form-check-input  ms-1" type="radio" name="deviceType" value="magneticLight" id="magneticLight">
                 <label class="form-check-label" for="magneticLight" style="color: #123;">
                     magnetic Light
@@ -97,7 +99,7 @@
 
 
       
-              <div class="form-check p-2 mb-3  d-flex align-items-center ">
+              <div class="form-check   d-flex align-items-center ">
                   <input class="form-check-input  ms-1" type="radio" name="deviceType" value="GasController" id="GasController">
                   <label class="form-check-label" for="GasController" style="color: #123;">
                       GasController
@@ -105,7 +107,7 @@
               </div>
           
 
-              <div class="form-check p-2 mb-3  d-flex align-items-center ">
+              <div class="form-check  d-flex align-items-center ">
                 <input class="form-check-input  ms-1" type="radio" name="deviceType" value="TV" id="TV">
                 <label class="form-check-label" for="TV" style="color: #123;">
                     TV
@@ -117,9 +119,8 @@
     
       </div>
         <!-- Name of all Devices -->
-        <select class="form-select form-select-lg mb-3 mt-3 NameOfDevice">
+        <select class="form-select form-select-lg mb-3 mt-3 NameOfDevice" >
           
-
         </select>
 
         <button class="btn btn-warning mb-2 addNewDevice"
@@ -132,7 +133,7 @@
               <input type="text" class="form-control " id="DifferentDevice">
             </div>
             <button class="btn btn-warning  addDefferentDevice"
-            style="font-weight: 600;">Add Device</button>
+            style="font-weight: 600;">Add </button>
         </div>
 
       </div>
@@ -143,15 +144,20 @@
           src="https://lottie.host/e104bd32-da8f-4554-9797-b75bc7ac664e/3iKZhohEd8.json"
           background="#FFFFFF" speed="1" style="width: 300px; height: 300px"
           loop autoplay direction="1" mode=“normal” class="loteemobile"></lottie-player>
-          <div class="d-flex align-items-center mt-3 parentselectImage">
-          <div>
-            <label style="color: #213 !important;" for="selectImg" class="form-label seimg">Select Image</label>
-            <input type="text" class="form-control typeText" id="selectImg">
-          </div>
-          <button class="btn btn-warning  selectImage"
-          style="font-weight: 600;">Select Image</button>
-          </div>
+  
+          <div class="d-flex align-items-center mt-3 parentselectImage ">
+            <button class="btn btn-warning  selectImage"
+            style="font-weight: 600;">Select </button>
+            <div>
+              <label style="color: #213 !important;" for="selectImg" class="form-label seimg">Select Image</label>
+              <input type="text" class="form-control typeText" id="selectImg">
+            </div>
+    
+            </div>
+
       </div>
+
+
 
     </div>
 
