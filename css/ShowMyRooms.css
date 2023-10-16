@@ -171,13 +171,13 @@ scale:.8
 }
 .contentDevices {
   position: fixed;
-  left: 11%;
-  top: 2%;
-  width: 75%;
+  left: 10%;
+  top: 10%;
+  width: 80%;
   background-color: #ffffff;
   z-index: 99999999;
   transition: 0.7s;
-  /* transform: scale(0); */
+   transform: scale(0); 
   border-radius: 10px;
 }
 
