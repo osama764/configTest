@@ -171,7 +171,7 @@ input[type="button"]:hover {
   background-color: #adb5bd;
   border-radius: 10px;
   padding: 15px;
-  transform: scale(0);
+  /* transform: scale(0); */
   transition: .7s;
   box-shadow: 0 0 15px #123;
 
@@ -199,4 +199,34 @@ input[type="button"]:hover {
   border-radius: 8px;
   text-align: center;
   font-size: 20px;
+}
+
+@media (max-width:1000px) {
+  .correct{
+
+    top: 50%;
+    left: 15%;
+
+    border-radius: 10px;
+    padding: 5px;
+
+  
+  }
+  .correct .close{
+    width: 25px;
+    height: 25px;
+    line-height: 25px;
+  
+    font-size: 15px;
+
+    transform: translateX(300px);
+  }
+  .correct .error-message{
+
+    width: 85%;
+    padding: 8px;
+
+    font-size: 16px;
+  }
+  
 }
