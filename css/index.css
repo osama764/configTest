@@ -171,7 +171,7 @@ input[type="button"]:hover {
   background-color: #adb5bd;
   border-radius: 10px;
   padding: 15px;
-  /* transform: scale(0); */
+  transform: scale(0);
   transition: .7s;
   box-shadow: 0 0 15px #123;
 
