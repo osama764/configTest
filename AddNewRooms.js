@@ -23,18 +23,6 @@ firebase.initializeApp(firebaseConfig);
 // Get a reference to  RealTime Database service
 const database = firebase.database();
 
-// the browser will speech during lading page AddingRoom
-function welcomeInRoom() {
-  let welcomeMessage = new SpeechSynthesisUtterance(
-    "Now you can add new rooms in your smart home"
-  );
-  let speech = window.speechSynthesis;
-  welcomeMessage.rate = 0.7;
-  speech.speak(welcomeMessage);
-}
-
-// calling function  welcomeInRoom()
-window.onload = welcomeInRoom();
 
 let addRoom = document.querySelector(".addRoom");
 let contentAddRoom = document.querySelector(".contentAddRoom");
@@ -69,16 +57,11 @@ addNewRoom.addEventListener("click", (e) => {
     addNewRoomInFirebase();
     // close form and browser will speech that Room added 
     contentAddRoom.style.transform = "translateX(120vw)";
-    let welcomeMessage = new SpeechSynthesisUtterance(
-      "A new room has been added"
-    );
-    let speech = window.speechSynthesis;
-    welcomeMessage.rate = 0.7;
-    speech.speak(welcomeMessage);
+
   } else {
     // if data of Room can't correct will appear message above form ( color Red )
     let h5 = document.createElement("h5");
-    h5.innerHTML = "Please Enter Data Correct !!";
+    h5.innerHTML = "أدخل البيانات بشكل صحيح";
     h5.classList = "alertMessage";
     contentAddRoom.prepend(h5);
 
@@ -90,73 +73,80 @@ addNewRoom.addEventListener("click", (e) => {
   }
 });
 
-// function add new Room in RealTime Database in firebase
-function addNewRoomInFirebase() {
 
+
+async function addNewRoomInFirebase() {
   // Taking the values ​​from the input fields for the room name and the room photo 
-  nameRoom = $("#nameRoom").val();
-  imageRoom = $("#imageRoom").val();
+  const nameRoomValue = nameRoom.value;
+  const imageRoomValue = imageRoom.value;
 
   // add values in this Object to send data to RealTime Database
-  var data = {
-    Name: nameRoom,
-    image: imageRoom,
+  const data = {
+    Name: nameRoomValue,
+    image: imageRoomValue,
     devices: [],
     devicesPush: [],
   };
 
-  // this function is plugin from jQuery to add Data in RealTime Database
-  $.ajax({
-    // url ===> my Project in RealTime Database
-    url: "https://smart-test-ee901-default-rtdb.firebaseio.com/Rooms.json",
-    method: "POST",
-    data: JSON.stringify(data), // Add data after converting from object to String
-    contentType: "application/json; charset=UTF-8",
-    dataType: "json",
-    success: function () {
-      clearForm(); // calling function Clear Form
-      alert("Data saved successfully");
-      DisplayData() // Calling function display data from RealTime 
-    },
-    error: function () {
-      alert("Failed to save Data");
-    },
-  });
-}
+  try {
+    const response = await fetch('https://smart-test-ee901-default-rtdb.firebaseio.com/Rooms.json', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    });
 
-// this function will delete values from input fields 
-function clearForm() {
-  $("#nameRoom").val("");
-  $("#imageRoom").val("");
+    if (response.ok) {
+      DisplayData()
+      console.log('Room added successfully');
+    } else {
+      throw new Error('Failed to add room');
+    }
+  } catch (error) {
+    console.error('Failed to add room:', error.message);
+  }
 }
-
-// this function will display all Rooms From RealTime Database 
 function DisplayData() {
-  $.ajax({
-    url: "https://smart-test-ee901-default-rtdb.firebaseio.com/Rooms.json",
-    method: "GET",
-    dataType: "json",
-    success: function (data) {
-      contentRooms.innerHTML = "";
+  // إنشاء طلب HTTP
+  const request = new XMLHttpRequest();
+  request.open('GET', 'https://smart-test-ee901-default-rtdb.firebaseio.com/Rooms.json');
 
-      for (var room in data) {
-        let card = `
-          <div  class="card border-0 p-3 m-2 text-center" style="background-image: url(../images/${data[room].image}.jpg);">
-          <i class="fa-solid fa-trash-can deletbtnThisRoom"></i>
-            <h3 class="mt-3 mb-3 room__title">${data[room].Name}</h3>
-            <button class="btn btn-warning  visit">Visit</button>
-            <span style="opacity:0">${room}</span> 
-          </div>
-        `;
-        contentRooms.innerHTML += card;
+  // إرسال الطلب
+  request.send();
+
+  // إضافة معالج لاستجابة الطلب
+  request.onload = function () {
+    if (request.status === 200) {
+      // تحويل البيانات إلى كائن JSON
+      const data = JSON.parse(request.responseText);
+
+      // حذف جميع العناصر الحالية
+      contentRooms.innerHTML = '';
+
+      // عرض بيانات الغرف
+      for (let key in data) {
+        if (data.hasOwnProperty(key)) {
+          const room = data[key];
+          const roomId = key; // معرف الغرفة
+
+          let card = `
+            <div class="card border-0 p-3 m-2 text-center" style="background-image: url(../images/${room.image}.jpg);">
+              <i class="fa-solid fa-trash-can deletbtnThisRoom"></i>
+              <h3 class="mt-3 mb-3 room__title">${room.Name}</h3>
+              <button class="btn btn-warning visit">فتح الغرفة</button>
+              <span style="opacity: 0">${roomId}</span>
+            </div>
+          `;
+          contentRooms.innerHTML += card;
+        }
       }
-    },
-    error: function () {
-      alert("Failed to load Data");
-    },
-  });
+    } else {
+      // رسالة خطأ في حالة فشل الطلب
+      alert('حدث خطأ أثناء استرداد بيانات الغرف');
+    }
+  };
 }
-
 // calling function display during loading Page
 window.onload = DisplayData();
 
@@ -193,8 +183,8 @@ contentRooms.addEventListener("click", (e) => {
     let uid = e.target.parentElement.lastElementChild.innerHTML
     // passing uid in function to delete this Room
     deleteRoom(uid)
-    // delete this Room from Dom ( static )
-    e.target.parentElement.remove();
+  
+
    }
 
 
@@ -247,16 +237,30 @@ images.forEach(function (image) {
   });
 });
 
-// this function use to delete Room by id
-function deleteRoom(uid) {
-  $.ajax({
-      url:`https://smart-test-ee901-default-rtdb.firebaseio.com/Rooms/${uid}.json`,
-      method:"DELETE",
-      success:function () {
-          alert("Room deleted successfully");
-      },
-      error:function () {
-          alert("Failed to delete Room");
-      }
-  });
+
+
+
+
+
+
+function deleteRoom(roomKey) {
+  // إنشاء طلب HTTP
+  const request = new XMLHttpRequest();
+  request.open('DELETE', `https://smart-test-ee901-default-rtdb.firebaseio.com/Rooms/${roomKey}.json`);
+
+  // إرسال الطلب
+  request.send();
+
+  // إضافة معالج لاستجابة الطلب
+  request.onload = function () {
+    if (request.status === 200) {
+      // تم حذف الغرفة بنجاح
+      console.log('تم حذف الغرفة بنجاح');
+      DisplayData()
+      // يمكنك إجراء أي إجراءات إضافية هنا بعد حذف الغرفة بنجاح
+    } else {
+      // حدث خطأ أثناء حذف الغرفة
+      console.error('حدث خطأ أثناء حذف الغرفة');
+    }
+  };
 }
