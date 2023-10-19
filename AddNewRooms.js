@@ -156,7 +156,7 @@ contentRooms.addEventListener("click", (e) => {
   // the Element that contains classes : ( card  border-0   p-3 m-2   text-center )
 
 
-  if (e.target.classList == "btn btn-warning  visit") {
+  if (e.target.classList == "btn btn-warning visit") {
 
     // Fetching room data via this current element on which the event takes place
     const nameImage = e.target.parentElement.style.backgroundImage
